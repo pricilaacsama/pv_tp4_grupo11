@@ -9,6 +9,6 @@ function MostrarProducto (props) {
             <p>ID: {producto.id} - {producto.descripcion} - ${producto.precioUnitario} - Stock {producto.stock}</p>
         </div>
     )
-}
+} 
 
 export default MostrarProducto;
