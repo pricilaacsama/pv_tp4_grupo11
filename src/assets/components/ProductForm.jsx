@@ -1,21 +1,33 @@
 import { useState, useEffect } from "react";
 
-export default function ProductoForm({onSubmit}){
+export default function ProductoForm(props){
     const [productoDato, setProductoDato] = useState({
-        id: '',
         descripcion: '',
         precioUnitario: '',
         descuento: '',
-        precioConDescuento: 0,
         stock: ''
     });
+
 
     const actualizarCampo = (e) => {
         const {name, value} = e.target;
         setProductoDato(dato => ({...dato, [name]: value}));
     };
 
-    const handleSubmit = (e) => {
+//genera el id automaticamente
+    const obtenerNuevoId = () => {
+    return ((props.productos.length > 0 ? Math.max(...props.productos.map(t => t.id)): 0) + 1);
+    }
+
+    const agregarProducto = (producto) => {
+    props.setProductos(productos => [...productos, producto]);
+  };
+
+    useEffect(() => {
+        console.log("Productos actualizado:", props.productos);
+    }, [props.productos]);
+
+    const enviarFormulario = (e) => {
         e.preventDefault();
 
         const precioUnitario = Number(productoDato.precioUnitario);
@@ -27,11 +39,11 @@ export default function ProductoForm({onSubmit}){
         return;
         }
         if (descuento < 0 || descuento > 100) {
-        alert('Tiene que ser un porcentaje entre 0 y 100');
+        alert('El descuento tiene que ser un porcentaje entre 0 y 100');
         return;
         }
-        if (stock < 0) {
-        alert('Tiene que ser un número mayor que 0');
+        if (stock <= 0) {
+        alert('El stock tiene que ser un numero mayor o igual que 0');
         return;
         }
         if (!productoDato.descripcion.trim()) {
@@ -39,20 +51,20 @@ export default function ProductoForm({onSubmit}){
         return;
         }
 
+//convierte a numero las variables:
         const nuevoProducto = {
             ...productoDato,
-            id: Number(productoDato.id),
+            id: obtenerNuevoId(),
             precioUnitario: Number(productoDato.precioUnitario),
             descuento: Number(productoDato.descuento),
             stock: Number(productoDato.stock),
             precioConDescuento: productoDato.precioUnitario * (1 - productoDato.descuento / 100)
         };
 
-        onSubmit(nuevoProducto);
+        agregarProducto(nuevoProducto);
 
         //limpia el formulario para ingresar un nuevo producto;
         setProductoDato({
-            id: '',
             descripcion: '',
             precioUnitario: '',
             descuento: '',
@@ -60,13 +72,12 @@ export default function ProductoForm({onSubmit}){
         });
 
     };
-    console.log('agreando un producto',productoDato);
+    
 
 return(
 
     <div>
-        <form onSubmit={handleSubmit}>
-            <input type="number" name="id" placeholder="id" value={productoDato.id} onChange={actualizarCampo} required></input>
+        <form onSubmit={enviarFormulario}>
             <input type="text" name="descripcion" placeholder="descripcion" value={productoDato.descripcion} onChange={actualizarCampo} required></input>
             <input type="number" name="precioUnitario" placeholder="precio unitario" value={productoDato.precioUnitario} onChange={actualizarCampo} required></input>
             <input type="number" name="descuento" placeholder="Descuento (%)" value={productoDato.descuento} onChange={actualizarCampo} required></input>
