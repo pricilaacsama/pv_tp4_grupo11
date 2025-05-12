@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function ProductoForm(props){
+    const [productos, setProductos] = props.productos;
     const [productoDato, setProductoDato] = useState({
         descripcion: '',
         precioUnitario: '',
@@ -16,16 +17,16 @@ export default function ProductoForm(props){
 
 //genera el id automaticamente
     const obtenerNuevoId = () => {
-    return ((props.productos.length > 0 ? Math.max(...props.productos.map(t => t.id)): 0) + 1);
+    return ((productos.length > 0 ? Math.max(...productos.map(t => t.id)): 0) + 1);
     }
 
     const agregarProducto = (producto) => {
-    props.setProductos(productos => [...productos, producto]);
+    setProductos(productos => [...productos, producto]);
   };
 
     useEffect(() => {
-        console.log("Productos actualizado:", props.productos);
-    }, [props.productos]);
+        console.log("Productos actualizado:", productos);
+    }, [productos]);
 
     const enviarFormulario = (e) => {
         e.preventDefault();
@@ -58,7 +59,7 @@ export default function ProductoForm(props){
             precioUnitario: Number(productoDato.precioUnitario),
             descuento: Number(productoDato.descuento),
             stock: Number(productoDato.stock),
-            precioConDescuento: productoDato.precioUnitario * (1 - productoDato.descuento / 100)
+            precioConDescuento: precioUnitario * (1 - descuento / 100)
         };
 
         agregarProducto(nuevoProducto);

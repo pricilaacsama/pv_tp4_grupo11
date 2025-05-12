@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback, useEffect } from 'react';
 import ProductoForm from './productform';
 import ProductList from './ProductList';
 
+
 export default function Producto(){
  const [productos, setProductos] = useState([
   {id:1, descripcion: "cafetera", precioUnitario: 90000, descuento: 20, precioConDescuento: 90000 - 90000 * 20 / 100, stock: 20},
@@ -15,8 +16,8 @@ export default function Producto(){
     return(
         <div>
         <h1>Gestión de productos</h1>
-        <ProductoForm productos={productos} setProductos={setProductos}></ProductoForm>
-        <ProductList productos={[productos,setProductos]}/>
+        <ProductoForm productos={[productos,setProductos]}></ProductoForm>
+        <ProductList productos={productos}/>
         </div>
 
     );
