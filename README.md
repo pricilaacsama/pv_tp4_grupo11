@@ -1,3 +1,12 @@
+# TP4 - PROGRAMACION VISUAL
+# GRUPO11
+# INTEGRANTES:
+* Juan Eduardo Lamas - usuario de Github: juanjujuy
+* Pricila Acsama - usuario de Github: pricilaacsama
+* Delia Maribel Cusipuma - usuario de Github: Delia150
+* Matias Gabriel Alfaro - usuario de Github: mati465
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
