@@ -1,21 +1,23 @@
 import { useState, useMemo } from "react";
 import MostrarProducto from "./MostrarProducto";
-import "../css/SearchBar.css";
+import "./css/SearchBar.css";
 
 function SearchBar({ productos }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const resultadosFiltrados = useMemo(() => {
-    return productos.filter(producto =>
+    return productos.filter((producto) =>
       producto.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
       producto.id.toString().includes(searchTerm)
     );
   }, [searchTerm, productos]);
 
   return (
-    <div className="search-bar">
+    <div className="search-bar-container">
+      <label className="search-bar-label">Buscar producto</label>
       <input
         type="text"
+        className="search-bar-input"
         placeholder="Buscar por ID o descripción"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -42,4 +44,3 @@ function SearchBar({ productos }) {
 }
 
 export default SearchBar;
-
