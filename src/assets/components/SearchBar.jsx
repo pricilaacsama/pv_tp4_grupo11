@@ -1,24 +1,44 @@
-import React, { useState } from "react";
-import ./css/SearchBar.css
+import { useState, useMemo } from "react";
+import MostrarProducto from "./MostrarProducto";
+import "./css/SearchBar.css";
 
-function SearchBar({ onSearch }) {
+function SearchBar({ productos }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-    onSearch(e.target.value);
-  };
+  const resultadosFiltrados = useMemo(() => {
+    return productos.filter((producto) =>
+      producto.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      producto.id.toString().includes(searchTerm)
+    );
+  }, [searchTerm, productos]);
 
   return (
-    <div>
-      <label htmlFor="search">Buscar producto:</label>
+    <div className="search-bar-container">
+      <label className="search-bar-label">Buscar producto</label>
       <input
         type="text"
-        id="search"
-        placeholder="Buscar por descripción o ID"
+        className="search-bar-input"
+        placeholder="Buscar por ID o descripción"
         value={searchTerm}
-        onChange={handleChange}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Descuento</th>
+            <th>Precio c/ Desc</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          {resultadosFiltrados.map((producto) => (
+            <MostrarProducto key={producto.id} producto={producto} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
