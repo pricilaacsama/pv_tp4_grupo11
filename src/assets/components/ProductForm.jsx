@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function ProductoForm(props){
+
+    const [primeraRenderizacion,setPrimeraRenderizacion] = useState(true);
     const [productos, setProductos] = props.productos;
     const [productoDato, setProductoDato] = useState({
-        descripcion: '',
+        nombre: '',
+        marca: '',
         precioUnitario: '',
         descuento: '',
         stock: ''
@@ -25,7 +28,8 @@ export default function ProductoForm(props){
   };
 
     useEffect(() => {
-        console.log("Productos actualizado:", productos);
+        primeraRenderizacion ? console.log("Formulario para Agregar Producto") : console.log("Producto Agregado", productos);
+        setPrimeraRenderizacion(false)
     }, [productos]);
 
     const enviarFormulario = (e) => {
@@ -47,7 +51,11 @@ export default function ProductoForm(props){
         alert('El stock tiene que ser un numero mayor o igual que 0');
         return;
         }
-        if (!productoDato.descripcion.trim()) {
+        if (!productoDato.nombre.trim()) {
+        alert('Tiene que tener descripcion');
+        return;
+        }
+        if (!productoDato.marca.trim()) {
         alert('Tiene que tener descripcion');
         return;
         }
@@ -59,14 +67,17 @@ export default function ProductoForm(props){
             precioUnitario: Number(productoDato.precioUnitario),
             descuento: Number(productoDato.descuento),
             stock: Number(productoDato.stock),
-            precioConDescuento: precioUnitario * (1 - descuento / 100)
+            precioConDescuento: precioUnitario * (1 - descuento / 100),
+            estado: true
+
         };
 
         agregarProducto(nuevoProducto);
 
         //limpia el formulario para ingresar un nuevo producto;
         setProductoDato({
-            descripcion: '',
+            nombre: '',
+            marca: '',
             precioUnitario: '',
             descuento: '',
             stock: ''
@@ -79,17 +90,15 @@ return(
 
     <div>
         <form onSubmit={enviarFormulario}>
-            <input type="text" name="descripcion" placeholder="descripcion" value={productoDato.descripcion} onChange={actualizarCampo} required></input>
-            <input type="number" name="precioUnitario" placeholder="precio unitario" value={productoDato.precioUnitario} onChange={actualizarCampo} required></input>
-            <input type="number" name="descuento" placeholder="Descuento (%)" value={productoDato.descuento} onChange={actualizarCampo} required></input>
-            <input type="number" name="stock" placeholder="Stock" value={productoDato.stock} onChange={actualizarCampo} required></input>
-            <button type="submit">agregar producto</button>
+            <input type="text" name="nombre" placeholder="nombre" value={productoDato.nombre} onChange={actualizarCampo} required></input><br />
+            <input type="text" name="marca" placeholder="marca" value={productoDato.marca} onChange={actualizarCampo} required/><br />
+            <input type="number" name="precioUnitario" placeholder="precio unitario" value={productoDato.precioUnitario} onChange={actualizarCampo} required></input><br />
+            <input type="number" name="descuento" placeholder="Descuento (%)" value={productoDato.descuento} onChange={actualizarCampo} required></input><br />
+            <input type="number" name="stock" placeholder="Stock" value={productoDato.stock} onChange={actualizarCampo} required></input><br />
+            <button type="submit">Agregar</button>
         </form>
     </div>
 
 );
-
-
-
 
 }
