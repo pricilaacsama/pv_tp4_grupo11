@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function ProductoForm(props){
 
@@ -23,9 +23,9 @@ export default function ProductoForm(props){
     return ((productos.length > 0 ? Math.max(...productos.map(t => t.id)): 0) + 1);
     }
 
-    const agregarProducto = (producto) => {
-    setProductos(productos => [...productos, producto]);
-  };
+    const agregarProducto = useCallback((producto) => {
+    setProductos((productos) => [...productos, producto]);
+  }, [setProductos]);
 
     useEffect(() => {
         primeraRenderizacion ? console.log("Formulario para Agregar Producto") : console.log("Producto Agregado", productos);

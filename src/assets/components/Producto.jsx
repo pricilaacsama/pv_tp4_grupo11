@@ -1,4 +1,4 @@
-import './producto.css';
+import '../../css/Producto.css';
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import ProductoForm from './productform';
 import ProductList from './ProductList';
@@ -55,7 +55,6 @@ export default function Producto(){
         <div>
          
         <h1>Gestión de productos</h1>
-       
         <button onClick={activarLista}>Mostra Productos</button>
         <button onClick={activarFormulario}>Agregar Producto</button>
         <button onClick={activarBuscador}>Buscar Producto</button>

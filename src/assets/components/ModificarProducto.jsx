@@ -31,9 +31,9 @@ function ModificarProducto (props) {
         const nuevoProducto = {
         nombre: productoDato.nombre ==='' ? productos[idProducto-1].nombre : productoDato.nombre,
         marca: productoDato.marca ==='' ? productos[idProducto-1].marca : productoDato.marca,
-        precioUnitario: productoDato.precioUnitario ==='' ? productos[idProducto-1].precioUnitario : Number.productoDato.precioUnitario,
-        descuento: productoDato.descuento ==='' ? productos[idProducto-1].descuento : Number.productoDato.descuento,
-        stock: productoDato.stock === '' ? productos[idProducto-1].stock : Number.productoDato.stock,
+        precioUnitario: productoDato.precioUnitario ==='' ? productos[idProducto-1].precioUnitario : Number(productoDato.precioUnitario),
+        descuento: productoDato.descuento ==='' ? productos[idProducto-1].descuento : Number(productoDato.descuento),
+        stock: productoDato.stock === '' ? productos[idProducto-1].stock : Number(productoDato.stock),
         estado: productos[idProducto-1].estado,
         id: productos[idProducto-1].id,
         };
