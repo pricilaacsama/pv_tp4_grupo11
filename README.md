@@ -6,6 +6,7 @@
 * Delia Maribel Cusipuma - usuario de Github: Delia150
 * Matias Gabriel Alfaro - usuario de Github: mati465
 
+*Matias Gabriel Alfaro no participo en este tp
 
 # React + Vite
 
