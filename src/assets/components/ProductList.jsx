@@ -1,22 +1,31 @@
-export default function ProductList({ productos }) {
-  if (productos.length === 0) {
-    return <p>No hay productos agregados todavía.</p>;
+import { useEffect } from "react";
+import MostrarProducto from "./MostrarProducto";
+
+export default function ProductList(props) {
+  const [productos,setProductos] = props.productos;
+
+  useEffect(()=>{
+    if(props.titulo.includes("Lista")){
+      console.log("Mostrando la lista de Productos")
+    }
+    if(props.titulo.includes("Busq")){
+      console.log("Mostrando barra de busqueda")
+    }
+  },[])
+  
+  if (productos.filter(prod=>prod.estado).length == 0) {
+    return <p>---</p>;
   }
 
   return (
     <div>
-      <h2>Listado de productos</h2>
+      <h2>{props.titulo}</h2>
       <ul>
-        {productos.map((producto) => (
-          <li key={producto.id}>
-            <strong>ID:</strong> {producto.id} {' '}
-            <strong>Descripción:</strong> {producto.descripcion} {' '}
-            <strong>Precio:</strong> ${producto.precioUnitario} {' '}
-            <strong>Descuento:</strong> {producto.descuento}% {' '}
-            <strong>Precio con Descuento:</strong> ${producto.precioConDescuento.toFixed(2)} {' '}
-            <strong>Stock:</strong> {producto.stock}
+        {productos.filter((prod) => (prod.estado)).map((prod) =>
+          <li key={prod.id}>
+            <MostrarProducto producto={prod}></MostrarProducto>
           </li>
-        ))}
+        )}
       </ul>
     </div>
   );
