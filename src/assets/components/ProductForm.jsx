@@ -90,11 +90,11 @@ return(
 
     <div>
         <form onSubmit={enviarFormulario}>
-            <input type="text" name="nombre" placeholder="nombre" value={productoDato.nombre} onChange={actualizarCampo} required></input><br />
-            <input type="text" name="marca" placeholder="marca" value={productoDato.marca} onChange={actualizarCampo} required/><br />
-            <input type="number" name="precioUnitario" placeholder="precio unitario" value={productoDato.precioUnitario} onChange={actualizarCampo} required></input><br />
-            <input type="number" name="descuento" placeholder="Descuento (%)" value={productoDato.descuento} onChange={actualizarCampo} required></input><br />
-            <input type="number" name="stock" placeholder="Stock" value={productoDato.stock} onChange={actualizarCampo} required></input><br />
+            <input type="text" name="nombre" placeholder="nombre" value={productoDato.nombre} onChange={actualizarCampo} required></input>
+            <input type="text" name="marca" placeholder="marca" value={productoDato.marca} onChange={actualizarCampo} required/>
+            <input type="number" name="precioUnitario" placeholder="precio unitario" value={productoDato.precioUnitario} onChange={actualizarCampo} required></input>
+            <input type="number" name="descuento" placeholder="Descuento (%)" value={productoDato.descuento} onChange={actualizarCampo} required></input>
+            <input type="number" name="stock" placeholder="Stock" value={productoDato.stock} onChange={actualizarCampo} required></input>
             <button type="submit">Agregar</button>
         </form>
     </div>
