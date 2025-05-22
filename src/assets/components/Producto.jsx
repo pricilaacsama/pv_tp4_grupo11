@@ -27,24 +27,44 @@ export default function Producto(){
 
  const activarBuscador = () => {
     setBuscador(!buscador)
+    setFormulario(false)
+    setLista(false)
+    setModificar(false)
+    setEliminado(false)
  }
 
  const activarFormulario = () => { 
     setFormulario(!formulario)
+    setBuscador(false)
+    setLista(false)
+    setModificar(false)
+    setEliminado(false)
 
  }
 
  const activarLista = () => {
     setLista(!lista);
+    setBuscador(false)
+    setFormulario(false)
+    setModificar(false)
+    setEliminado(false)
     console.log(productos)
  }
 
  const activarModificar = () => {
     setModificar(!modificar);
+    setBuscador(false)
+    setFormulario(false)
+    setLista(false)
+    setEliminado(false)
  }
 
  const activarEliminado = () => {
    setEliminado(!eliminado)
+    setBuscador(false)
+    setFormulario(false)
+    setLista(false)
+    setModificar(false)
  }
 
  useEffect (()=> {
