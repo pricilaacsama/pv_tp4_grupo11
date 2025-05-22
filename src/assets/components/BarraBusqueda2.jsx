@@ -123,8 +123,7 @@ function BarraBusqueda (props) {
            
             <label>Busqueda: </label>
             <input type="text" value={buscado} onChange={guardarBuscado}/><br />
-            
-
+            <br></br>
             <input type="radio" name="busqueda" value = '1' onChange={guardarOpcion} checked={opcion == "1"}/>
             <label>Por ID</label><br />
 
