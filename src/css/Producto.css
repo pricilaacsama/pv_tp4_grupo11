@@ -1,53 +1,29 @@
 body {
-  background-color: #b2b9a7;
+  background-color: #f6f7f3;
   font-family: Arial, sans-serif;
   text-align: center;
 }
 
 h1 {
-  color: black;
-  font-size: 100px;
-  margin-bottom: 90px;
+  color: rgb(2, 21, 104);
+  font-size: 70px;
+  margin-bottom: 80px;
    
 }
 
-li{
-  list-style-type: none;
-}
-
-label{
-  display: flex;
-}
-
-input{
-  width: 50%;
-  height: auto;
-}
-
-div {
+.producto-container {
   background-color: #e0e0e0;
-  padding: 20px;
-  border-radius: 8px;
-  color: black;
-  display:block;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  padding: 100px;
+  border-radius: 20px;
 
-  width: 80%;
-  margin: 0 auto;
 }
-
 
 button {
-  background-color: #818181; 
   color: black;
   border: none;
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  font-size: 20px;
 }
 
 button:hover {
@@ -55,7 +31,81 @@ button:hover {
   color: black;
 }
 
-button:active {
-  background-color: #e9b8cf; 
-  color: black;
+
+.producto-fila {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 1px;
+  background-color: #f7f2f2;
+  color: #0a0a0a;
+}
+.etiqueta{
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+
+.barra-busqueda-container {
+  padding: 20px;
+  background-color: #f8f2f2;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.barra-busqueda-titulo {
+  text-align: center;
+  color: #333;
+}
+
+.barra-busqueda-input-group {
+  margin-bottom: 15px;
+}
+
+.barra-busqueda-label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.barra-busqueda-input {
+  padding: 8px;
+  width: 100%;
+}
+
+.barra-busqueda-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.barra-busqueda-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.barra-busqueda-resultados {
+  margin-top: 20px;
+}
+
+.lista {
+  margin-top: 2px;
+}
+
+
+.input-modificar {
+ padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.boton-modificar {
+  padding: 10px 15px;
+  background-color: #27d42d;
+  color: rgb(253, 252, 252);
+  border: none;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
